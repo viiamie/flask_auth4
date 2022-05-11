@@ -52,12 +52,14 @@ class Movies(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(300), nullable=True, unique=False)
     content = db.Column(db.Text, nullable=True, unique=False)
+    rating = db.Column(db.String(300), nullable=True, unique=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     users = db.relationship("User", back_populates="movies", uselist=False)
 
-    def __init__(self, title, content, user_id):
+    def __init__(self, title, content, rating, user_id):
         self.title = title
         self.content = content
+        self.rating = rating
         self.user_id = user_id
 
     def get_id(self):

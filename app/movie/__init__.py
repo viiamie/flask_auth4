@@ -37,7 +37,7 @@ def add_movie():
     add_movie_form = addMovieForm()
     if add_movie_form.validate_on_submit():
         movies = Movies(title=add_movie_form.movie_title.data, content=add_movie_form.movie_description.data,
-                        user_id=current_user.id)
+                        rating=add_movie_form.movie_rating.data, user_id=current_user.id)
         db.session.add(movies)
         db.session.commit()
         flash("New movie added successfully", "success")
@@ -60,7 +60,7 @@ def edit_movie(movie_id):
     if edit_movie_form.validate_on_submit():
         db.session.delete(movies)
         movies = Movies(title=edit_movie_form.movie_title.data, content=edit_movie_form.movie_description.data,
-                        user_id=current_user.id)
+                        rating=edit_movie_form.movie_rating.data, user_id=current_user.id)
         db.session.add(movies)
         db.session.commit()
         flash("Movie edited successfully", "success")
