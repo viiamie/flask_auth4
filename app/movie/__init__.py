@@ -65,7 +65,7 @@ def edit_movie(movie_id):
         db.session.commit()
         flash("Movie edited successfully", "success")
         return redirect(url_for('movie.my_movies'))
-    return render_template('add_movie.html', form=edit_movie_form)
+    return render_template('edit_movie.html', form=edit_movie_form)
 
 
 @movie.route('/movies/delete/<int:movie_id>', methods=['POST'])
