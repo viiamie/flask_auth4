@@ -12,6 +12,7 @@ from app.db import db
 from app.db.models import User
 from app.error_handlers import error_handlers
 from app.simple_pages import simple_pages
+from app.movie import movie
 from app.db import database
 from flask_cors import CORS
 
@@ -37,6 +38,7 @@ def create_app():
     # these load functions with web interface
     app.register_blueprint(simple_pages)
     app.register_blueprint(auth)
+    app.register_blueprint(movie)
     app.register_blueprint(database)
     # these load functionality without a web interface
     app.register_blueprint(error_handlers)

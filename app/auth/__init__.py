@@ -98,8 +98,7 @@ def edit_account():
 
 
 
-#You should probably move these to a new Blueprint to clean this up.  These functions below are for user management
-
+#user management
 @auth.route('/users')
 @login_required
 @admin_required
