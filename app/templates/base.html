@@ -39,7 +39,8 @@
                         {% endif %}
                         {{ render_nav_item('simple_pages.index', 'Home') }}
                         {{ render_nav_item('simple_pages.about','About') }}
-                        {{ render_nav_item('movie./movies','Movies') }}
+                        {{ render_nav_item('movie.browse_movies','Browse Movies') }}
+                        {{ render_nav_item('movie.my_movies','My Movies') }}
                     </div>
                 </div>
                 <div class="navbar-nav d-flex">
@@ -50,12 +51,11 @@
                                 My Account
                             </a>
                             <ul class="dropdown-menu " aria-labelledby="navbarDarkDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{ url_for("auth.edit_profile") }}">Manage
-                                    Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for("auth.edit_account") }}">Manage
-                                    Account</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for("auth.edit_profile") }}">Manage Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for("auth.edit_account") }}">Manage Account</a></li>
                                 {% if current_user.is_admin %}
-                                    <li><a class="dropdown-item" href="{{ url_for("auth.browse_users") }}">User Mgmt</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for("auth.browse_users") }}">User Management</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for("movie.manage_movies") }}">Manage Movies</a></li>
 
 
                                 {% endif %}
