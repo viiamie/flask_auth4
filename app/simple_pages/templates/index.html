@@ -2,9 +2,8 @@
 {% block content %}
     <div class="row">
         <article class="col-8 lh-lg fs-5">
-
            <h1>Welcome</h1>
-           You can view and manage the movies you've inputted in "My Movies".
+           Log in or Register to use this website to browse and keep track of your favorite movies.
         </article>
         {% if current_user.is_authenticated == false %}
             <aside class="col-4">
@@ -19,7 +18,6 @@
                 </form>
             </aside>
         {% endif %}
-
     </div>
 {% endblock %}
 </article>
