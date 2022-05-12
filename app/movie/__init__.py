@@ -28,7 +28,7 @@ def browse_movies(page):
 @login_required
 def retrieve_movie(movie_id):
     movies = Movies.query.get(movie_id)
-    return render_template('view_movie.html', movies=movies)
+    return render_template('view_movie.html', Movies=Movies)
 
 
 @movie.route('/movies/add', methods=['POST', 'GET'])

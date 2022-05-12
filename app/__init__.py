@@ -10,9 +10,11 @@ from app.cli import create_database
 from app.context_processors import utility_text_processors
 from app.db import db
 from app.db.models import User
+from app.db.models import Movies
 from app.error_handlers import error_handlers
 from app.simple_pages import simple_pages
 from app.movie import movie
+from app import movie
 from app.db import database
 from flask_cors import CORS
 
