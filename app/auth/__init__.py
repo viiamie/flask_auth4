@@ -13,7 +13,7 @@ auth = Blueprint('auth', __name__, template_folder='templates')
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('auth.dashboard'))
+        return redirect(url_for('movie.my_movies'))
     form = register_form()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -36,7 +36,7 @@ def register():
 def login():
     form = login_form()
     if current_user.is_authenticated:
-        return redirect(url_for('auth.dashboard'))
+        return redirect(url_for('movie.my_movies'))
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None or not user.check_password(form.password.data):
@@ -48,7 +48,7 @@ def login():
             db.session.commit()
             login_user(user)
             flash("Welcome", 'success')
-            return redirect(url_for('auth.dashboard'))
+            return redirect(url_for('movie.my_movies'))
     return render_template('login.html', form=form)
 
 @auth.route("/logout")
@@ -61,7 +61,6 @@ def logout():
     db.session.commit()
     logout_user()
     return redirect(url_for('auth.login'))
-
 
 
 @auth.route('/dashboard')
@@ -92,7 +91,7 @@ def edit_account():
         user.password = form.password.data
         db.session.add(current_user)
         db.session.commit()
-        flash('You Successfully Updated your Password or Email', 'success')
+        flash('You successfully updated your account', 'success')
         return redirect(url_for('auth.dashboard'))
     return render_template('manage_account.html', form=form)
 

@@ -20,6 +20,7 @@ def test_auth_pages(client):
     response = client.get("/login")
     assert response.status_code == 200
 
+
 def test_login(client):
     response = client.get("/login")
     assert response.status_code == 200
@@ -57,8 +58,9 @@ def test_register_badPassword_matching(client):
 @pytest.mark.parametrize(
     ("email", "password", "confirm"),
     (("test@email.com", "abc", "abc"),
-     ("test@email.com", "1", "1")),
+    ("test@email.com", "1", "1")),
 )
+
 def test_register_badPassword_criteria(client, email, password, confirm):
     """This tests a bad password that does not meet the criteria (registration)"""
     response = client.post("/register", data=dict(email=email, password=password, confirm=confirm),
@@ -87,7 +89,6 @@ def test_already_registered(client):
         response = client.post("register", data={"email": "email@email.com", "password": "Testtest1!",
                                                  "confirm": "Testtest1!"})
         assert "/login" == response.headers["Location"]
-
 
 def test_deny_movies_access(client):
     """This test denies access to the movies dashboard for users not logged-in"""
